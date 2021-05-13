@@ -6,8 +6,8 @@ import { setAuthedUser } from './authedUser'
 // TODO: Remove hardcoded user id
 const AUTHED_ID = 'tylermcginnis';
 
-export async function handleInitialData() {
-  return (dispatch) => {
+export function handleInitialData() {
+  return async (dispatch) => {
     const users = await _getUsers();
     const questions = await _getQuestions();
 
