@@ -4,13 +4,10 @@ import { connect } from 'react-redux'
 class Question extends React.Component {
   render() {
     const { question, avatarURL } = this.props;
-    if (!question) {
-      return <p>This Question does not exist</p>;
-    }
     return (
-      <div style={{ display: "grid", gridTemplateColumns: "10% 90%", gridGap: 20 }}>
+      <div style={{ display: "grid", gridTemplateColumns: "10% 90%", gridGap: 20, alignItems: 'center' }}>
         <div>
-          <img src={ avatarURL } alt="" style={{width:"100px", height:"100px"}}/>
+          <img src={ avatarURL } alt="" style={{width:"75%", height:"75%"}}/>
         </div>
         <div>
           <h3>{`${question.author} asks:`}</h3>
@@ -28,7 +25,7 @@ function mapStateToProps({authedUser, users, questions}, { id }) {
   return {
     authedUser,
     question: question,
-    avatarURL: question ? users[question.author].avatarURL : null
+    avatarURL: users[question.author].avatarURL
   };
 }
 
