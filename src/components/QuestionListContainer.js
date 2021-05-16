@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import QuestionList from './QuestionList'
 
-class QuestionDashboard extends React.Component {
+class QuestionListContainer extends React.Component {
   render() {
     return (
       <div>
@@ -22,4 +22,4 @@ function mapStateToProps({authedUser, users, questions}) {
   };
 }
 
-export default connect(mapStateToProps)(QuestionDashboard);
+export default connect(mapStateToProps)(QuestionListContainer);
