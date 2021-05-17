@@ -1,6 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
+import { handleAddQuestion } from '../actions/questions'
+
 class NewQuestion extends React.Component {
   state = {
     optionOneText: '',
@@ -18,8 +20,10 @@ class NewQuestion extends React.Component {
   }
   handleSubmit = e => {
     e.preventDefault();
-    // TODO: Handle submit...
-    console.log(`option 1 text: ${this.state.optionOneText}, option 2 text: ${this.state.optionTwoText}`)
+    this.props.dispatch(handleAddQuestion(
+      this.props.authedUser,
+      this.state.optionOneText,
+      this.state.optionTwoText));
   }
   render() {
     return (
@@ -55,4 +59,10 @@ class NewQuestion extends React.Component {
   }
 }
 
-export default connect()(NewQuestion);
+function mapStateToProps({authedUser}) {
+  return {
+    authedUser
+  }
+}
+
+export default connect(mapStateToProps)(NewQuestion);

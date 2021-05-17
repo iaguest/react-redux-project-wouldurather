@@ -39,15 +39,20 @@ function addQuestion(question) {
   }
 }
 
-export function handleAddQuestion(question) {
+export function handleAddQuestion(author, optionOneText, optionTwoText) {
   return async (dispatch) => {
-    dispatch(addQuestion(question));
+    let question;
     try {
-      return _saveQuestion(question);
+      question = await _saveQuestion({
+        author,
+        optionOneText,
+        optionTwoText
+      });
     } catch (e) {
       console.warn('Error in handleAddQuestion: ', e);
-      // TODO: reverse setting to previous state
       alert('There was an error when creating your question. Try again!');
+      return;
     }
+    dispatch(addQuestion(question));
   }
 }
