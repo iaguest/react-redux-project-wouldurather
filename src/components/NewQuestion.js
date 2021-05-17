@@ -43,7 +43,12 @@ class NewQuestion extends React.Component {
             style={{width: "300px"}}
             onChange={ (e) => {this.updateOptionTwo(e.target.value)} } />
           <br /><br />
-          <input type="submit" value="Submit" />
+          <input
+            type="submit"
+            value="Submit"
+            disabled={!this.state.optionOne ||
+                      !this.state.optionTwo ||
+                      this.state.optionOne === this.state.optionTwo}/>
         </form>          
       </div>
     );
