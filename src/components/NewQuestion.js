@@ -3,23 +3,23 @@ import { connect } from 'react-redux'
 
 class NewQuestion extends React.Component {
   state = {
-    optionOne: '',
-    optionTwo: ''
+    optionOneText: '',
+    optionTwoText: ''
   }
-  updateOptionOne = value => {
+  updateOptionOneText = value => {
     this.setState((prevState) => ({
-      optionOne: value
+      optionOneText: value
     }));
   }
-  updateOptionTwo = value => {
+  updateOptionTwoText = value => {
     this.setState((prevState) => ({
-      optionTwo: value
+      optionTwoText: value
     }))
   }
   handleSubmit = e => {
     e.preventDefault();
     // TODO: Handle submit...
-    console.log(`option 1: ${this.state.optionOne}, option 2: ${this.state.optionTwo}`)
+    console.log(`option 1 text: ${this.state.optionOneText}, option 2 text: ${this.state.optionTwoText}`)
   }
   render() {
     return (
@@ -31,24 +31,24 @@ class NewQuestion extends React.Component {
           <input
             type="text"
             placeholder="Enter Option One Text Here..."
-            value={this.state.optionOne}
+            value={this.state.optionOneText}
             style={{width: "300px"}}
-            onChange={ (e) => {this.updateOptionOne(e.target.value)} } />
+            onChange={ (e) => {this.updateOptionOneText(e.target.value)} } />
           <br />
           <p>OR</p>
           <input
             type="text"
             placeholder="Enter Option Two Text Here..."
-            value={this.state.optionTwo}
+            value={this.state.optionTwoText}
             style={{width: "300px"}}
-            onChange={ (e) => {this.updateOptionTwo(e.target.value)} } />
+            onChange={ (e) => {this.updateOptionTwoText(e.target.value)} } />
           <br /><br />
           <input
             type="submit"
             value="Submit"
-            disabled={!this.state.optionOne ||
-                      !this.state.optionTwo ||
-                      this.state.optionOne === this.state.optionTwo}/>
+            disabled={!this.state.optionOneText ||
+                      !this.state.optionTwoText ||
+                      this.state.optionOneText === this.state.optionTwoText}/>
         </form>          
       </div>
     );
