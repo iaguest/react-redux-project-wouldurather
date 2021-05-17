@@ -2,7 +2,8 @@ import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import LoadingBar from 'react-redux-loading'
 import { handleInitialData } from '../actions/shared'
-import QuestionListContainer from './QuestionListContainer'
+import NewQuestion from '../components/NewQuestion'
+//import QuestionListContainer from './QuestionListContainer'
 
 class App extends Component {
   componentDidMount() {
@@ -16,7 +17,7 @@ class App extends Component {
           { this.props.loading === true
               ? null
               : <div>
-                  <QuestionListContainer />
+                  <NewQuestion />
                 </div>
             } 
         </div>
