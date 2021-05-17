@@ -42,8 +42,7 @@ class NewQuestion extends React.Component {
             value={this.state.optionTwo}
             style={{width: "300px"}}
             onChange={ (e) => {this.updateOptionTwo(e.target.value)} } />
-          <br />
-          <br />
+          <br /><br />
           <input type="submit" value="Submit" />
         </form>          
       </div>

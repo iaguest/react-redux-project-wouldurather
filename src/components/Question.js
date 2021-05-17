@@ -13,15 +13,17 @@ class Question extends React.Component {
       selectedOption: e.target.value
     }));
   }
-  onSubmit = (authedUser, qid, answer) => {
+  onSubmit = e => {
+    e.preventDefault();
+    const { authedUser, question } = this.props;
     this.props.dispatch(handleAnswerQuestion({
       authedUser,
-      qid,
-      answer
+      qid: question.id,
+      answer: this.state.selectedOption
     }));
   }
   render() {
-    const { authedUser, question, avatarURL } = this.props;
+    const { question, avatarURL } = this.props;
     return (
       <div
         style={{
@@ -38,7 +40,7 @@ class Question extends React.Component {
           <h2>{`${question.author} asks:`}</h2>
           <p>Would you rather?</p>
           <div>
-            <form>
+            <form onSubmit={this.onSubmit} >
               <input
                 type="radio"
                 id="choiceOne"
@@ -56,17 +58,16 @@ class Question extends React.Component {
                 checked={this.state.selectedOption === optionTwoString}
                 onChange={this.onSelectOption} />
               <label>2. { question.optionTwo.text }</label>
+              <br /><br />
+              <div>
+                <input
+                  type="submit"
+                  value="Submit"
+                  disabled={this.state.selectedOption === this.props.selectedOption}/>
+              </div>
             </form>
           </div>
           <br/>
-          <div>
-            <button
-              type="submit"
-              disabled={this.state.selectedOption === this.props.selectedOption}
-              onClick={(e)=>{ this.onSubmit(authedUser, question.id, this.state.selectedOption) }}
-              >Submit
-            </button>
-          </div>
         </div>
       </div>
     );
