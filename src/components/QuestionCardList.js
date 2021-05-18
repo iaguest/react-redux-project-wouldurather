@@ -1,20 +1,20 @@
+import QuestionCard from './QuestionCard'
 import Question from './Question'
-import QuestionOptions from './QuestionOptions'
 
-function QuestionList(props) {
+function QuestionCardList(props) {
   return (
     <div>
         <h3>{props.title}</h3>
         <ul style={{ listStyleType: "none" }}>
           { props.ids.map(id => (
               <li key={id}>
-                <Question
+                <QuestionCard
                   id={id}
-                  content={<QuestionOptions id={id}/>}/>
+                  content={<Question id={id}/>}/>
               </li>))}
         </ul>     
     </div>
   );
 }
 
-export default QuestionList;
+export default QuestionCardList;

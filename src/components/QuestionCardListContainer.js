@@ -1,13 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import QuestionList from './QuestionList'
+import QuestionCardList from './QuestionCardList'
 
-class QuestionListContainer extends React.Component {
+class QuestionCardListContainer extends React.Component {
   render() {
     return (
       <div>
-        <QuestionList title='Unanswered Questions' ids={this.props.unansweredIds} />
-        <QuestionList title='Answered Questions' ids={this.props.answeredIds} />
+        <QuestionCardList title='Unanswered Questions' ids={this.props.unansweredIds} />
+        <QuestionCardList title='Answered Questions' ids={this.props.answeredIds} />
       </div>
     );
   }
@@ -22,4 +22,4 @@ function mapStateToProps({authedUser, users, questions}) {
   };
 }
 
-export default connect(mapStateToProps)(QuestionListContainer);
+export default connect(mapStateToProps)(QuestionCardListContainer);

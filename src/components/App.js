@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import LoadingBar from 'react-redux-loading'
 import { handleInitialData } from '../actions/shared'
 import NewQuestion from '../components/NewQuestion'
-import QuestionListContainer from './QuestionListContainer'
+import QuestionCardListContainer from './QuestionCardListContainer'
 import Nav from './Nav'
 
 class App extends Component {
@@ -22,7 +22,7 @@ class App extends Component {
             { this.props.loading === true
                 ? null
                 : <div>
-                    <Route path='/' exact component={QuestionListContainer} />
+                    <Route path='/' exact component={QuestionCardListContainer} />
                     <Route path='/new' component={NewQuestion} />
                   </div>
               } 
