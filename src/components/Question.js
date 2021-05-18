@@ -1,8 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { optionOneString, optionTwoString} from '../utils/strings'
+import { optionOneString, optionTwoString, wouldYouRatherString } from '../utils/strings'
 import { handleAnswerQuestion } from '../actions/questions'
+import { getSelectedOption } from '../utils/questionHelper'
 
 class Question extends React.Component {
   state = {
@@ -26,7 +27,7 @@ class Question extends React.Component {
     const { question } = this.props;
     return (
       <div>
-        <p>Would you rather?</p>
+        <p>{ wouldYouRatherString }</p>
         <div>
           <form onSubmit={this.onSubmit} >
             <input
@@ -54,27 +55,18 @@ class Question extends React.Component {
                 disabled={this.state.selectedOption === this.props.selectedOption}/>
             </div>
           </form>
-        </div>
-        <br/>        
+        </div>       
       </div>
     );
   }
 }
 
-function answerIds(users, authedUser) {
-  return Object.keys(users[authedUser].answers);
-}
-
 function mapStateToProps({authedUser, users, questions}, { id }) {
-  const question = questions[id];
-  const selectedOption = answerIds(users, authedUser).includes(id)
-    ? users[authedUser].answers[id]
-    : null;
   return {
     authedUser,
-    question,
-    selectedOption
-  }
+    question: questions[id],
+    selectedOption: getSelectedOption(users, authedUser, id)
+  };
 }
 
 export default connect(mapStateToProps)(Question);

@@ -20,6 +20,7 @@ class QuestionCard extends React.Component {
             { content }
           </div>
         </div>
+        <br />
       </div>
     );
   }

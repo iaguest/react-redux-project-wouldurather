@@ -1,5 +1,5 @@
 import QuestionCard from './QuestionCard'
-import Question from './Question'
+import QuestionSummary from './QuestionSummary'
 
 function QuestionCardList(props) {
   return (
@@ -10,7 +10,7 @@ function QuestionCardList(props) {
               <li key={id}>
                 <QuestionCard
                   id={id}
-                  content={<Question id={id}/>}/>
+                  content={<QuestionSummary id={id}/>}/>
               </li>))}
         </ul>     
     </div>
