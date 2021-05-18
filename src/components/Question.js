@@ -25,49 +25,49 @@ class Question extends React.Component {
   render() {
     const { question, avatarURL } = this.props;
     return (
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "10% 90%",
-          gridGap: 20,
-          alignItems: 'center',
-          border: "1px solid black",
-          margin: "10px" }}>
-        <div>
-          <img src={ avatarURL } alt="" style={{width:"75%", height:"75%"}}/>
-        </div>
-        <div>
-          <h2>{`${question.author} asks:`}</h2>
-          <p>Would you rather?</p>
+      <div style={{border: "1px solid black", padding: "5px" }}>
+        <h3>{`${question.author} asks:`}</h3>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "10% 90%",
+            gridGap: 20,
+            alignItems: 'center'}}>
           <div>
-            <form onSubmit={this.onSubmit} >
-              <input
-                type="radio"
-                id="choiceOne"
-                name="contact"
-                value={optionOneString}
-                checked={this.state.selectedOption === optionOneString}
-                onChange={this.onSelectOption} />
-              <label>1. { question.optionOne.text }</label>
-              <br/>
-              <input
-                type="radio"
-                id="choiceTwo"
-                name="contact"
-                value={optionTwoString}
-                checked={this.state.selectedOption === optionTwoString}
-                onChange={this.onSelectOption} />
-              <label>2. { question.optionTwo.text }</label>
-              <br /><br />
-              <div>
-                <input
-                  type="submit"
-                  value="Submit"
-                  disabled={this.state.selectedOption === this.props.selectedOption}/>
-              </div>
-            </form>
+            <img src={ avatarURL } alt="" style={{width:"75%", height:"75%"}}/>
           </div>
-          <br/>
+          <div>
+            <p>Would you rather?</p>
+            <div>
+              <form onSubmit={this.onSubmit} >
+                <input
+                  type="radio"
+                  id="choiceOne"
+                  name="contact"
+                  value={optionOneString}
+                  checked={this.state.selectedOption === optionOneString}
+                  onChange={this.onSelectOption} />
+                <label>1. { question.optionOne.text }</label>
+                <br/>
+                <input
+                  type="radio"
+                  id="choiceTwo"
+                  name="contact"
+                  value={optionTwoString}
+                  checked={this.state.selectedOption === optionTwoString}
+                  onChange={this.onSelectOption} />
+                <label>2. { question.optionTwo.text }</label>
+                <br /><br />
+                <div>
+                  <input
+                    type="submit"
+                    value="Submit"
+                    disabled={this.state.selectedOption === this.props.selectedOption}/>
+                </div>
+              </form>
+            </div>
+            <br/>
+          </div>
         </div>
       </div>
     );
