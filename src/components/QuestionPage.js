@@ -1,12 +1,12 @@
-import QuestionCard from './QuestionCard'
-import QuestionDefinition from './QuestionDefinition'
+import QuestionHolder from './QuestionHolder'
+import Question from './Question'
 
 function QuestionPage(props) {
   const { id } = props.match.params;
   return (
-    <QuestionCard
+    <QuestionHolder
       id={id}
-      content={<QuestionDefinition id={id} />} />
+      content={<Question id={id} />} />
   );
 }
 

@@ -1,13 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import QuestionCardList from './QuestionCardList'
+import QuestionSummaryList from './QuestionSummaryList'
 
-class QuestionCardListContainer extends React.Component {
+class QuestionSummaryListPage extends React.Component {
   render() {
     return (
       <div>
-        <QuestionCardList title='Unanswered Questions' ids={this.props.unansweredIds} />
-        <QuestionCardList title='Answered Questions' ids={this.props.answeredIds} />
+        <QuestionSummaryList title='Unanswered Questions' ids={this.props.unansweredIds} />
+        <QuestionSummaryList title='Answered Questions' ids={this.props.answeredIds} />
       </div>
     );
   }
@@ -22,4 +22,4 @@ function mapStateToProps({authedUser, users, questions}) {
   };
 }
 
-export default connect(mapStateToProps)(QuestionCardListContainer);
+export default connect(mapStateToProps)(QuestionSummaryListPage);

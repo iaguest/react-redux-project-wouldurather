@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 import { handleAddQuestion } from '../actions/questions'
 
-class NewQuestion extends React.Component {
+class NewQuestionPage extends React.Component {
   state = {
     optionOneText: '',
     optionTwoText: ''
@@ -65,4 +65,4 @@ function mapStateToProps({authedUser}) {
   }
 }
 
-export default connect(mapStateToProps)(NewQuestion);
+export default connect(mapStateToProps)(NewQuestionPage);

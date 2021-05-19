@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-class QuestionCard extends React.Component {
+class QuestionHolder extends React.Component {
   render() {
     const { author, avatarURL, content } = this.props;
     return (
@@ -37,4 +37,4 @@ function mapStateToProps({users, questions}, { id, content }) {
   };
 }
 
-export default connect(mapStateToProps)(QuestionCard);
+export default connect(mapStateToProps)(QuestionHolder);

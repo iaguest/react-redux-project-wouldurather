@@ -1,14 +1,14 @@
-import QuestionCard from './QuestionCard'
+import QuestionHolder from './QuestionHolder'
 import QuestionSummary from './QuestionSummary'
 
-function QuestionCardList(props) {
+function QuestionSummaryList(props) {
   return (
     <div>
         <h3>{props.title}</h3>
         <ul style={{ listStyleType: "none" }}>
           { props.ids.map(id => (
               <li key={id}>
-                <QuestionCard
+                <QuestionHolder
                   id={id}
                   content={<QuestionSummary id={id}/>}/>
               </li>))}
@@ -17,4 +17,4 @@ function QuestionCardList(props) {
   );
 }
 
-export default QuestionCardList;
+export default QuestionSummaryList;

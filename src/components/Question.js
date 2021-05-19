@@ -5,7 +5,7 @@ import { optionOneString, optionTwoString, wouldYouRatherString } from '../utils
 import { handleAnswerQuestion } from '../actions/questions'
 import { getSelectedOption } from '../utils/questionHelper'
 
-class QuestionDefinition extends React.Component {
+class Question extends React.Component {
   state = {
     selectedOption: this.props.selectedOption
   }
@@ -69,4 +69,4 @@ function mapStateToProps({authedUser, users, questions}, { id }) {
   };
 }
 
-export default connect(mapStateToProps)(QuestionDefinition);
+export default connect(mapStateToProps)(Question);
