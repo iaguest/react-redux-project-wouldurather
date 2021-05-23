@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 
 import { optionOneString, optionTwoString, wouldYouRatherString } from '../utils/strings'
 import { handleAnswerQuestion } from '../actions/questions'
@@ -7,7 +8,8 @@ import { getSelectedOption } from '../utils/questionHelper'
 
 class Question extends React.Component {
   state = {
-    selectedOption: this.props.selectedOption
+    selectedOption: this.props.selectedOption,
+    toResult: false,
   }
   onSelectOption = e => {
     this.setState(()=>({
@@ -22,9 +24,17 @@ class Question extends React.Component {
       qid: question.id,
       answer: this.state.selectedOption
     }));
+    this.setState(() => ({
+      toResult: true
+    }));
   }
   render() {
     const { question } = this.props;
+
+    if (this.state.toResult === true) {
+      this.props.history.push(`/question/${question.id}/result`);
+    }
+
     return (
       <div>
         <p>{ wouldYouRatherString }</p>
@@ -69,4 +79,4 @@ function mapStateToProps({authedUser, users, questions}, { id }) {
   };
 }
 
-export default connect(mapStateToProps)(Question);
+export default withRouter(connect(mapStateToProps)(Question));
