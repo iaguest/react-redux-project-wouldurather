@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
-import { wouldYouRatherString } from '../utils/strings'
+import { wouldYouRatherString, buildQuestionPath } from '../utils/strings'
 import { getSelectedOption } from '../utils/questionHelper'
 
 class QuestionSummary extends React.Component {
@@ -12,7 +12,7 @@ class QuestionSummary extends React.Component {
       // TODO: handle userHasAnswered case
       return;
     }
-    this.props.history.push(`/question/${id}`);
+    this.props.history.push(`${buildQuestionPath(id)}`);
   }
   render() {
     const { question, userHasAnswered } = this.props;

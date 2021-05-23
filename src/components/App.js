@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 import LoadingBar from 'react-redux-loading'
 
-import { questionIdPath } from '../utils/strings'
+import { rootPath, newQuestionPath, questionPath, questionResultPath } from '../utils/strings'
 import { handleInitialData } from '../actions/shared'
 import NewQuestionPage from '../components/NewQuestionPage'
 import QuestionSummaryListPage from './QuestionSummaryListPage'
@@ -26,10 +26,10 @@ class App extends Component {
             { this.props.loading === true
                 ? null
                 : <div>
-                    <Route path='/' exact component={QuestionSummaryListPage} />
-                    <Route path={ `${questionIdPath}` } exact component={QuestionPage} />
-                    <Route path={ `${questionIdPath}/result` } exact component={QuestionResultPage} />
-                    <Route path='/new' component={NewQuestionPage} />
+                    <Route path={ rootPath } exact component={QuestionSummaryListPage} />
+                    <Route path={ questionPath } exact component={QuestionPage} />
+                    <Route path={ questionResultPath } exact component={QuestionResultPage} />
+                    <Route path={ newQuestionPath } component={NewQuestionPage} />
                   </div>
               } 
           </div>

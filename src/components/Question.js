@@ -2,7 +2,13 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
-import { optionOneString, optionTwoString, wouldYouRatherString } from '../utils/strings'
+import {
+  optionOneString,
+  optionTwoString,
+  wouldYouRatherString,
+  buildQuestionResultPath
+} from '../utils/strings'
+
 import { handleAnswerQuestion } from '../actions/questions'
 import { getSelectedOption } from '../utils/questionHelper'
 
@@ -32,7 +38,7 @@ class Question extends React.Component {
     const { question } = this.props;
 
     if (this.state.toResult === true) {
-      this.props.history.push(`/question/${question.id}/result`);
+      this.props.history.push(`${buildQuestionResultPath(question.id)}`);
     }
 
     return (

@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 
 import { handleAddQuestion } from '../actions/questions'
+import { rootPath } from '../utils/strings'
 
 class NewQuestionPage extends React.Component {
   state = {
@@ -37,7 +38,7 @@ class NewQuestionPage extends React.Component {
     const { optionOneText, optionTwoText, toHome } = this.state;
 
     if (toHome === true) {
-      return <Redirect to='/' />
+      return <Redirect to={rootPath} />
     }
 
     return (
