@@ -38,7 +38,7 @@ class Question extends React.Component {
     const { question } = this.props;
 
     if (this.state.toResult === true) {
-      this.props.history.push(`${buildQuestionResultPath(question.id)}`);
+      this.props.history.push(buildQuestionResultPath(question.id));
     }
 
     return (
