@@ -6,8 +6,12 @@ class QuestionSummaryListPage extends React.Component {
   render() {
     return (
       <div>
-        <QuestionSummaryList title='Unanswered Questions' ids={this.props.unansweredIds} />
-        <QuestionSummaryList title='Answered Questions' ids={this.props.answeredIds} />
+        <QuestionSummaryList
+          title='Unanswered Questions'
+          ids={this.props.unansweredIds} />
+        <QuestionSummaryList
+          title='Answered Questions'
+          ids={this.props.answeredIds} />
       </div>
     );
   }

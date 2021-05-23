@@ -8,7 +8,7 @@ import { handleInitialData } from '../actions/shared'
 import NewQuestionPage from '../components/NewQuestionPage'
 import QuestionSummaryListPage from './QuestionSummaryListPage'
 import QuestionPage from './QuestionPage'
-import ResultPage from './ResultPage'
+import QuestionResultPage from './QuestionResultPage'
 import Nav from './Nav'
 
 class App extends Component {
@@ -28,7 +28,7 @@ class App extends Component {
                 : <div>
                     <Route path='/' exact component={QuestionSummaryListPage} />
                     <Route path={ `${questionIdPath}` } exact component={QuestionPage} />
-                    <Route path={ `${questionIdPath}/result` } exact component={ResultPage} />
+                    <Route path={ `${questionIdPath}/result` } exact component={QuestionResultPage} />
                     <Route path='/new' component={NewQuestionPage} />
                   </div>
               } 
