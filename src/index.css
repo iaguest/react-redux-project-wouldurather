@@ -47,3 +47,8 @@ li {
   padding: 10px;
   text-decoration: none;
 }
+
+.votes {
+  font-weight: bold;
+  text-indent: 10px;  
+}
