@@ -1,12 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 
 import { handleAddQuestion } from '../actions/questions'
 
 class NewQuestionPage extends React.Component {
   state = {
     optionOneText: '',
-    optionTwoText: ''
+    optionTwoText: '',
+    toHome: false,
   }
   updateOptionOneText = value => {
     this.setState((prevState) => ({
@@ -23,9 +25,21 @@ class NewQuestionPage extends React.Component {
     this.props.dispatch(handleAddQuestion(
       this.props.authedUser,
       this.state.optionOneText,
-      this.state.optionTwoText));
+      this.state.optionTwoText)
+    );
+    this.setState(() => ({
+      optionOneText: '',
+      optionTwoText: '',
+      toHome: true,
+    }));
   }
   render() {
+    const { optionOneText, optionTwoText, toHome } = this.state;
+
+    if (toHome === true) {
+      return <Redirect to='/' />
+    }
+
     return (
       <div>
         <h3>Create New Question</h3>
@@ -35,7 +49,7 @@ class NewQuestionPage extends React.Component {
           <input
             type="text"
             placeholder="Enter Option One Text Here..."
-            value={this.state.optionOneText}
+            value={optionOneText}
             style={{width: "300px"}}
             onChange={ (e) => {this.updateOptionOneText(e.target.value)} } />
           <br />
@@ -43,16 +57,16 @@ class NewQuestionPage extends React.Component {
           <input
             type="text"
             placeholder="Enter Option Two Text Here..."
-            value={this.state.optionTwoText}
+            value={optionTwoText}
             style={{width: "300px"}}
             onChange={ (e) => {this.updateOptionTwoText(e.target.value)} } />
           <br /><br />
           <input
             type="submit"
             value="Submit"
-            disabled={!this.state.optionOneText ||
-                      !this.state.optionTwoText ||
-                      this.state.optionOneText === this.state.optionTwoText}/>
+            disabled={!optionOneText ||
+                      !optionTwoText ||
+                      optionOneText === optionTwoText}/>
         </form>          
       </div>
     );
@@ -62,7 +76,7 @@ class NewQuestionPage extends React.Component {
 function mapStateToProps({authedUser}) {
   return {
     authedUser
-  }
+  };
 }
 
 export default connect(mapStateToProps)(NewQuestionPage);
