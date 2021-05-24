@@ -48,6 +48,11 @@ li {
   text-decoration: none;
 }
 
+.card {
+  border: 1px solid black;
+  padding: 5px;
+}
+
 .votes {
   font-weight: bold;
   text-indent: 10px;  

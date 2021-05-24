@@ -3,16 +3,16 @@ import { connect } from 'react-redux'
 
 class QuestionHolder extends React.Component {
   render() {
-    const { author, avatarURL, content } = this.props;
+    const { name, avatarURL, content } = this.props;
     return (
-      <div style={{border: "1px solid black", padding: "5px" }}>
-        <h3>{`${author} asks:`}</h3>
+      <div className="card">
+        <h3>{`${name} asks:`}</h3>
         <div
           style={{
             display: "grid",
             gridTemplateColumns: "10% 90%",
             gridGap: 20,
-            alignItems: 'center'}}>
+            alignItems: 'center'}} >
           <div>
             <img src={ avatarURL } alt="" style={{width:"75%", height:"75%"}}/>
           </div>
@@ -26,13 +26,12 @@ class QuestionHolder extends React.Component {
   }
 }
 
-
-
 function mapStateToProps({users, questions}, { id, content }) {
-  const author = questions[id].author;
+  const userId = questions[id].author;
+  const user = users[userId];
   return {
-    author,
-    avatarURL: users[author].avatarURL,
+    name: user.name,
+    avatarURL: user.avatarURL,
     content
   };
 }
