@@ -6,6 +6,7 @@ export const buildQuestionPath = (id) => `${_questionPathHead}${id}`
 const _resultPathTail = '/result'
 export const questionResultPath = `${questionPath}${_resultPathTail}`
 export const buildQuestionResultPath = (id) => `${buildQuestionPath(id)}${_resultPathTail}`
+export const leaderBoardPath = `${rootPath}leaderboard`
 
 export const optionOneString = "optionOne";
 export const optionTwoString = "optionTwo";

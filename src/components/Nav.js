@@ -1,7 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 
-import { rootPath, newQuestionPath } from '../utils/strings'
+import { rootPath, newQuestionPath, leaderBoardPath } from '../utils/strings'
 
 export default function Nav() {
   return (
@@ -17,8 +17,12 @@ export default function Nav() {
             New Question
           </NavLink>
         </li>
+        <li>
+          <NavLink to={leaderBoardPath} exact activeClassName='active'>
+            Leader Board
+          </NavLink>
+        </li>
       </ul>
     </nav>
-
   );
 }

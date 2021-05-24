@@ -3,12 +3,13 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 import LoadingBar from 'react-redux-loading'
 
-import { rootPath, newQuestionPath, questionPath, questionResultPath } from '../utils/strings'
+import { rootPath, newQuestionPath, questionPath, questionResultPath, leaderBoardPath } from '../utils/strings'
 import { handleInitialData } from '../actions/shared'
 import NewQuestionPage from '../components/NewQuestionPage'
 import QuestionSummaryListPage from './QuestionSummaryListPage'
 import QuestionPage from './QuestionPage'
 import QuestionResultPage from './QuestionResultPage'
+import LeaderBoardItem from './LeaderBoardItem'
 import Nav from './Nav'
 
 class App extends Component {
@@ -30,6 +31,7 @@ class App extends Component {
                     <Route path={ questionPath } exact component={QuestionPage} />
                     <Route path={ questionResultPath } exact component={QuestionResultPage} />
                     <Route path={ newQuestionPath } component={NewQuestionPage} />
+                    <Route path={ leaderBoardPath } component={LeaderBoardItem} />
                   </div>
               } 
           </div>
