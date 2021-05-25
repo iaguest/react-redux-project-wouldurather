@@ -26,9 +26,9 @@ class QuestionHolder extends React.Component {
   }
 }
 
-function mapStateToProps({users, questions}, { id, content }) {
-  const userId = questions[id].author;
-  const user = users[userId];
+function mapStateToProps({users, questions}, { qid, content }) {
+  const uid = questions[qid].author;
+  const user = users[uid];
   return {
     name: user.name,
     avatarURL: user.avatarURL,

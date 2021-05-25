@@ -6,13 +6,13 @@ import { wouldYouRatherString, buildQuestionPath, buildQuestionResultPath } from
 import { getSelectedOption } from '../utils/questionHelper'
 
 class QuestionSummary extends React.Component {
-  onSubmit = (e, id, userHasAnswered) => {
+  onSubmit = (e, qid, userHasAnswered) => {
     e.preventDefault();
     if (userHasAnswered) {
-      this.props.history.push(buildQuestionResultPath(id));
+      this.props.history.push(buildQuestionResultPath(qid));
       return;
     }
-    this.props.history.push(buildQuestionPath(id));
+    this.props.history.push(buildQuestionPath(qid));
   }
   render() {
     const { question, userHasAnswered } = this.props;
@@ -34,11 +34,11 @@ class QuestionSummary extends React.Component {
   }
 }
 
-function mapStateToProps({authedUser, users, questions}, {id}) {
-  const selectedOption = getSelectedOption(users, authedUser, id);
+function mapStateToProps({authedUser, users, questions}, {qid}) {
+  const selectedOption = getSelectedOption(users, authedUser, qid);
   return {
     authedUser,
-    question: questions[id],
+    question: questions[qid],
     userHasAnswered: selectedOption !== null
   };
 }

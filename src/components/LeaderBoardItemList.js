@@ -8,11 +8,10 @@ function LeaderBoardItemList(props) {
   return (
     <ul>
       { props.uidScorePairs.map(pair => {
-          const id = pair[0];
-          const score = pair[1];
+        const uid = pair[0];
           return (
-            <li key={id}>
-              <LeaderBoardItem id={id} score={score}/>
+            <li key={uid}>
+              <LeaderBoardItem uid={uid} score={pair[1]}/>
             </li>
           );
         })
@@ -22,10 +21,10 @@ function LeaderBoardItemList(props) {
 }
 
 function mapStateToProps({users}) {
-  const uidScorePairs = Object.values(users).map(user => [user.id, score(user)]).sort((a, b)=>b[1]-a[1]);
-  return {
-    uidScorePairs
-  };
+  const uidScorePairs = Object.values(users)
+    .map(user => [user.id, score(user)])
+      .sort((a, b)=>b[1]-a[1]);
+  return { uidScorePairs };
 }
 
 export default connect(mapStateToProps)(LeaderBoardItemList);

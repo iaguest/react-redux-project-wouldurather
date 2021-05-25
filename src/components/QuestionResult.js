@@ -36,8 +36,8 @@ function _displayVotes(num, total, isSelectedOption) {
   );
 }
 
-function mapStateToProps({authedUser, users, questions}, {id}) {
-  const question = questions[id];
+function mapStateToProps({authedUser, users, questions}, {qid}) {
+  const question = questions[qid];
   const optionOne = question.optionOne;
   const optionTwo = question.optionTwo;
   const numVotesOption1 = optionOne.votes.length;
@@ -49,7 +49,7 @@ function mapStateToProps({authedUser, users, questions}, {id}) {
     numVotesOption1,
     numVotesOption2,
     totalVotes: numVotesOption1 + numVotesOption2,
-    selectedOption: getSelectedOption(users, authedUser, id),
+    selectedOption: getSelectedOption(users, authedUser, qid),
   };
 }
 

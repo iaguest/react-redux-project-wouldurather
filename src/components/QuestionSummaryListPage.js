@@ -8,10 +8,10 @@ class QuestionSummaryListPage extends React.Component {
       <div>
         <QuestionSummaryList
           title='Unanswered Questions'
-          ids={this.props.unansweredIds} />
+          qids={this.props.unansweredIds} />
         <QuestionSummaryList
           title='Answered Questions'
-          ids={this.props.answeredIds} />
+          qids={this.props.answeredIds} />
       </div>
     );
   }
@@ -19,7 +19,7 @@ class QuestionSummaryListPage extends React.Component {
 
 function mapStateToProps({authedUser, users, questions}) {
   const answeredIds = new Set(Object.keys(users[authedUser].answers));
-  const unansweredIds = Object.keys(questions).filter(id => !answeredIds.has(id));
+  const unansweredIds = Object.keys(questions).filter(qid => !answeredIds.has(qid));
   return {
     answeredIds: [...answeredIds],
     unansweredIds

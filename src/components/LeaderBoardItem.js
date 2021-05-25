@@ -32,8 +32,8 @@ class LeaderBoardItem extends React.Component {
   }
 }
 
-function mapStateToProps({users}, {id, score}) {
-  const user = users[id];
+function mapStateToProps({users}, {uid, score}) {
+  const user = users[uid];
   const numQuestions = user.questions.length;
   const numAnswered = answerIds(user).length;
   return {

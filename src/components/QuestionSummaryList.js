@@ -6,11 +6,11 @@ function QuestionSummaryList(props) {
     <div>
         <h3>{props.title}</h3>
         <ul>
-          { props.ids.map(id => (
-              <li key={id}>
+          { props.qids.map(qid => (
+              <li key={qid}>
                 <QuestionHolder
-                  id={id}
-                  content={<QuestionSummary id={id}/>}/>
+                  qid={qid}
+                  content={<QuestionSummary qid={qid}/>}/>
               </li>))}
         </ul>     
     </div>

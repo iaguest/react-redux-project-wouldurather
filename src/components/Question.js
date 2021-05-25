@@ -77,11 +77,11 @@ class Question extends React.Component {
   }
 }
 
-function mapStateToProps({authedUser, users, questions}, { id }) {
+function mapStateToProps({authedUser, users, questions}, { qid }) {
   return {
     authedUser,
-    question: questions[id],
-    selectedOption: getSelectedOption(users, authedUser, id)
+    question: questions[qid],
+    selectedOption: getSelectedOption(users, authedUser, qid)
   };
 }
 
