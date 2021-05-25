@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { answerIds, score } from '../utils/userHelper'
+import { answerIds } from '../utils/userHelper'
 
 class LeaderBoardItem extends React.Component {
   render() {
@@ -32,7 +32,7 @@ class LeaderBoardItem extends React.Component {
   }
 }
 
-function mapStateToProps({users}, {id}) {
+function mapStateToProps({users}, {id, score}) {
   const user = users[id];
   const numQuestions = user.questions.length;
   const numAnswered = answerIds(user).length;
@@ -41,7 +41,7 @@ function mapStateToProps({users}, {id}) {
     avatarURL: user.avatarURL,
     numAnswered,
     numQuestions,
-    score: score(user)
+    score
   };
 }
 
