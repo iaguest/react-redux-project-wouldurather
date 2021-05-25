@@ -1,18 +1,28 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import 'react-tabs/style/react-tabs.css';
+
 import QuestionSummaryList from './QuestionSummaryList'
 
 class QuestionSummaryListPage extends React.Component {
   render() {
     return (
-      <div>
-        <QuestionSummaryList
-          title='Unanswered Questions'
-          qids={this.props.unansweredIds} />
-        <QuestionSummaryList
-          title='Answered Questions'
-          qids={this.props.answeredIds} />
-      </div>
+      <Tabs>
+        <TabList>
+          <Tab>Unanswered Questions</Tab>
+          <Tab>Answered Questions</Tab>
+        </TabList>
+    
+        <TabPanel>
+          <QuestionSummaryList
+            qids={this.props.unansweredIds} />
+        </TabPanel>
+        <TabPanel>
+          <QuestionSummaryList
+            qids={this.props.answeredIds} />
+        </TabPanel>
+      </Tabs>
     );
   }
 }
