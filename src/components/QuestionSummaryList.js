@@ -5,7 +5,7 @@ function QuestionSummaryList(props) {
   return (
     <div>
         <h3>{props.title}</h3>
-        <ul style={{ listStyleType: "none" }}>
+        <ul>
           { props.ids.map(id => (
               <li key={id}>
                 <QuestionHolder

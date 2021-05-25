@@ -1,6 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
+import { answerIds, score } from '../utils/userHelper'
+
 class LeaderBoardItem extends React.Component {
   render() {
     const { name, avatarURL, numAnswered, numQuestions, score } = this.props;
@@ -30,18 +32,16 @@ class LeaderBoardItem extends React.Component {
   }
 }
 
-function mapStateToProps({authedUser, users, questions}, {id}) {
-  id = authedUser; // TODO: DELETE THIS!!!
+function mapStateToProps({users}, {id}) {
   const user = users[id];
-  console.log("USER", user);
-  const numAnswered = Object.keys(user.answers).length;
   const numQuestions = user.questions.length;
+  const numAnswered = answerIds(user).length;
   return {
     name: user.name,
     avatarURL: user.avatarURL,
     numAnswered,
     numQuestions,
-    score: numAnswered + numQuestions
+    score: score(user)
   };
 }
 
