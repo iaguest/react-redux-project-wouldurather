@@ -5,7 +5,7 @@ import { setAuthedUser } from './authedUser'
 import { showLoading, hideLoading } from 'react-redux-loading'
 
 // TODO: Remove hardcoded user id
-const AUTHED_ID = 'tylermcginnis';
+const AUTHED_UID = 'tylermcginnis';
 
 export function handleInitialData() {
   return async (dispatch) => {
@@ -16,7 +16,7 @@ export function handleInitialData() {
 
     dispatch(receiveUsers(users));
     dispatch(receiveQuestions(questions));
-    dispatch(setAuthedUser(AUTHED_ID));
+    dispatch(setAuthedUser(AUTHED_UID));
     dispatch(hideLoading());
   }
 }
