@@ -4,7 +4,7 @@ import LeaderBoardItem from './LeaderBoardItem'
 
 import { score } from '../utils/userHelper'
 
-function LeaderBoardItemList(props) {
+function LeaderBoardPage(props) {
   return (
     <ul>
       { props.orderedUidScorePairs.map(pair => {
@@ -27,4 +27,4 @@ function mapStateToProps({users}) {
   return { orderedUidScorePairs };
 }
 
-export default connect(mapStateToProps)(LeaderBoardItemList);
+export default connect(mapStateToProps)(LeaderBoardPage);

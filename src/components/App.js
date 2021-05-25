@@ -9,7 +9,7 @@ import NewQuestionPage from '../components/NewQuestionPage'
 import QuestionSummaryListPage from './QuestionSummaryListPage'
 import QuestionPage from './QuestionPage'
 import QuestionResultPage from './QuestionResultPage'
-import LeaderBoardItemList from './LeaderBoardItemList'
+import LeaderBoardPage from './LeaderBoardPage'
 import Nav from './Nav'
 
 class App extends Component {
@@ -31,7 +31,7 @@ class App extends Component {
                     <Route path={ questionPath } exact component={QuestionPage} />
                     <Route path={ questionResultPath } exact component={QuestionResultPage} />
                     <Route path={ newQuestionPath } component={NewQuestionPage} />
-                    <Route path={ leaderBoardPath } component={LeaderBoardItemList} />
+                    <Route path={ leaderBoardPath } component={LeaderBoardPage} />
                   </div>
               } 
           </div>
