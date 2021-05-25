@@ -52,7 +52,8 @@ class Question extends React.Component {
               name="contact"
               value={optionOneString}
               checked={this.state.selectedOption === optionOneString}
-              onChange={this.onSelectOption} />
+              onChange={this.onSelectOption} 
+              disabled={this.props.selectedOption} />
             <label>1. { question.optionOne.text }</label>
             <br/>
             <input
@@ -61,7 +62,8 @@ class Question extends React.Component {
               name="contact"
               value={optionTwoString}
               checked={this.state.selectedOption === optionTwoString}
-              onChange={this.onSelectOption} />
+              onChange={this.onSelectOption}
+              disabled={this.props.selectedOption} />
             <label>2. { question.optionTwo.text }</label>
             <br /><br />
             <div>
