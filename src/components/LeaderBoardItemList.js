@@ -7,7 +7,7 @@ import { score } from '../utils/userHelper'
 function LeaderBoardItemList(props) {
   return (
     <ul>
-      { props.uidScorePairs.map(pair => {
+      { props.orderedUidScorePairs.map(pair => {
         const uid = pair[0];
           return (
             <li key={uid}>
@@ -21,10 +21,10 @@ function LeaderBoardItemList(props) {
 }
 
 function mapStateToProps({users}) {
-  const uidScorePairs = Object.values(users)
+  const orderedUidScorePairs = Object.values(users)
     .map(user => [user.id, score(user)])
       .sort((a, b)=>b[1]-a[1]);
-  return { uidScorePairs };
+  return { orderedUidScorePairs };
 }
 
 export default connect(mapStateToProps)(LeaderBoardItemList);

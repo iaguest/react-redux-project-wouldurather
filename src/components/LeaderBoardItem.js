@@ -34,13 +34,11 @@ class LeaderBoardItem extends React.Component {
 
 function mapStateToProps({users}, {uid, score}) {
   const user = users[uid];
-  const numQuestions = user.questions.length;
-  const numAnswered = answerIds(user).length;
   return {
     name: user.name,
     avatarURL: user.avatarURL,
-    numAnswered,
-    numQuestions,
+    numAnswered: answerIds(user).length,
+    numQuestions: user.questions.length,
     score
   };
 }
