@@ -38,14 +38,12 @@ function _displayVotes(num, total, isSelectedOption) {
 
 function mapStateToProps({authedUser, users, questions}, {qid}) {
   const question = questions[qid];
-  const optionOne = question.optionOne;
-  const optionTwo = question.optionTwo;
-  const numVotesOption1 = optionOne.votes.length;
-  const numVotesOption2 = optionTwo.votes.length;
+  const numVotesOption1 = question.optionOne.votes.length;
+  const numVotesOption2 = question.optionTwo.votes.length;
   return {
     authedUser,
-    optionOne: optionOne.text,
-    optionTwo: optionTwo.text,
+    optionOne: question.optionOne.text,
+    optionTwo: question.optionTwo.text,
     numVotesOption1,
     numVotesOption2,
     totalVotes: numVotesOption1 + numVotesOption2,
