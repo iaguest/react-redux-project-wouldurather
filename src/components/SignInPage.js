@@ -1,12 +1,30 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 
-function SignInPage(props) {
-  return (
-    <div>
-      SIGN IN
-    </div>
-  );
+import { setAuthedUser } from '../actions/authedUser'
+import { isAuthenticated } from '../utils/authedUserHelper'
+
+class SignInPage extends React.Component {
+  onSubmit = (event) => {
+    event.preventDefault();
+    this.props.dispatch(setAuthedUser('tylermcginnis'));
+  }
+  render() {
+    if (this.props.isAuthenticated) {
+      return <Redirect to={ this.props.location.state.nextPathName } />;
+    }
+    return (
+      <div>
+        <button onClick={ this.onSubmit }>SIGN IN</button>
+      </div>
+    );
+  }
 }
 
-export default connect()(SignInPage);
+const mapStateToProps = ({authedUser}) => ({
+  isAuthenticated: isAuthenticated(authedUser)
+});
+
+export default withRouter(connect(mapStateToProps)(SignInPage));
