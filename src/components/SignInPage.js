@@ -7,9 +7,17 @@ import { setAuthedUser } from '../actions/authedUser'
 import { isAuthenticated } from '../utils/authedUserHelper'
 
 class SignInPage extends React.Component {
+  state = {
+    selectedUser: this.props.defaultUid
+  }
+  onSelectUser = (item) => {
+    this.setState((prevState)=>({
+      selectedUser: item
+    }));
+  }
   onSubmit = (event) => {
     event.preventDefault();
-    this.props.dispatch(setAuthedUser('tylermcginnis'));
+    this.props.dispatch(setAuthedUser(this.state.selectedUser));
   }
   render() {
     if (this.props.isAuthenticated) {
@@ -17,14 +25,31 @@ class SignInPage extends React.Component {
     }
     return (
       <div>
-        <button onClick={ this.onSubmit }>SIGN IN</button>
+        <h3>Welcome to the Would You Rather App!</h3>
+        <h4>Please sign in to continue</h4>
+        <select
+          value={ this.state.selectedUser }
+          onChange={(e) => this.onSelectUser(e.target.value)}
+          >
+          { this.props.uids.map((uid) => {
+              return <option key={uid} value={uid}>{uid}</option>; })
+          }
+        </select>
+        <p/>
+        <button onClick={ (e) => { this.onSubmit(e) } }>Sign In</button>
       </div>
     );
   }
 }
 
-const mapStateToProps = ({authedUser}) => ({
-  isAuthenticated: isAuthenticated(authedUser)
-});
+const mapStateToProps = ({authedUser, users}) => {
+  const uids = Object.values(users).map((user) => user.id);
+  return ({
+      uids,
+      defaultUid: uids[0],
+      isAuthenticated: isAuthenticated(authedUser)
+    }
+  )
+};
 
 export default withRouter(connect(mapStateToProps)(SignInPage));
