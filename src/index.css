@@ -18,6 +18,19 @@ code {
   padding: 10px;
 }
 
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.header-end-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end; 
+}
+
 a {
   text-decoration: none;
 }

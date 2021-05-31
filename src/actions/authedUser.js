@@ -1,3 +1,5 @@
+import { defaultAuthedUid } from '../utils/authedUserHelper'
+
 export const SET_AUTHED_USER = 'SET_AUTHED_USER';
 
 export function setAuthedUser(uid) {
@@ -5,4 +7,8 @@ export function setAuthedUser(uid) {
     type: SET_AUTHED_USER,
     uid,
   }
+}
+
+export function setDefaultUser() {
+  return setAuthedUser(defaultAuthedUid);
 }

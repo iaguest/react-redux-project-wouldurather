@@ -6,6 +6,8 @@ import { Redirect } from 'react-router-dom'
 import { setAuthedUser } from '../actions/authedUser'
 import { isAuthenticated } from '../utils/authedUserHelper'
 
+import { rootPath } from '../utils/strings'
+
 class SignInPage extends React.Component {
   state = {
     selectedUser: this.props.defaultUid
@@ -19,9 +21,14 @@ class SignInPage extends React.Component {
     event.preventDefault();
     this.props.dispatch(setAuthedUser(this.state.selectedUser));
   }
+  nextPath = () => {
+    return (this.props.location.state)
+      ? this.props.location.state.nextPathName ?? rootPath
+      : rootPath;
+  }
   render() {
     if (this.props.isAuthenticated) {
-      return <Redirect to={ this.props.location.state.nextPathName } />;
+      return <Redirect to={ this.nextPath() } />;
     }
     return (
       <div>
