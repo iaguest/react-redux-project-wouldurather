@@ -1,7 +1,7 @@
 export const rootPath = '/';
 export const signInPath = `${rootPath}sign-in`
-export const newQuestionPath = `${rootPath}new`;
-const _questionPathHead = `${rootPath}question/`
+export const newQuestionPath = `${rootPath}add`;
+const _questionPathHead = `${rootPath}questions/`
 export const questionPath = `${_questionPathHead}:qid`;
 export const buildQuestionPath = (qid) => `${_questionPathHead}${qid}`
 const _resultPathTail = '/result'
