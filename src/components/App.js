@@ -1,10 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
-import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import LoadingBar from 'react-redux-loading'
-import { setDefaultUser } from '../actions/authedUser'
-import { isAuthenticated } from '../utils/authedUserHelper'
 
 import {
   rootPath,
@@ -15,7 +12,7 @@ import {
   signInPath } from '../utils/strings'
 import { handleInitialData } from '../actions/shared'
 import { requireAuthentication } from './AuthenticatedComponent';
-import Nav from './Nav'
+import Header from './Header'
 import SignInPage from '../components/SignInPage'
 import QuestionSummaryListPage from './QuestionSummaryListPage'
 import QuestionPage from './QuestionPage'
@@ -33,21 +30,7 @@ class App extends Component {
         <Fragment>
           <LoadingBar />
           <div className='container'>
-            <div className='header'>
-              <Nav />
-              { !this.props.loading && isAuthenticated(this.props.authedUser) &&
-                <ul className="header-end-item">
-                  <li>{`Hello ${this.props.authedUser}!`}</li>
-                  <li>
-                    <Link
-                      to={signInPath}
-                      onClick={ (e) => { this.props.dispatch(setDefaultUser())} }
-                      >Sign Out
-                    </Link>
-                  </li>
-                </ul>
-              }         
-            </div>
+            <Header />
             <hr />
             { this.props.loading
                 ? null
@@ -69,7 +52,6 @@ class App extends Component {
 
 function mapStateToProps({authedUser}) {
   return {
-    authedUser,
     loading: authedUser === null
   };
 }
