@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 import Nav from './Nav'
 import { signInPath } from '../utils/strings'
-import { setDefaultUser } from '../actions/authedUser'
+import { resetAuthedUser } from '../actions/authedUser'
 import { isAuthenticated } from '../utils/authedUserHelper'
 
 function Header(props) {
@@ -17,7 +17,7 @@ function Header(props) {
         <li>
           <Link
             to={signInPath}
-            onClick={ (e) => { props.dispatch(setDefaultUser())} }
+            onClick={ (e) => { props.dispatch(resetAuthedUser())} }
             >Sign Out
           </Link>
         </li>

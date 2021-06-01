@@ -1,7 +1,7 @@
 import { _getUsers, _getQuestions } from '../api/_DATA'
 import { receiveQuestions } from './questions'
 import { receiveUsers } from './users'
-import { setDefaultUser } from './authedUser'
+import { resetAuthedUser } from './authedUser'
 import { showLoading, hideLoading } from 'react-redux-loading'
 
 export function handleInitialData() {
@@ -13,7 +13,7 @@ export function handleInitialData() {
 
     dispatch(receiveUsers(users));
     dispatch(receiveQuestions(questions));
-    dispatch(setDefaultUser());
+    dispatch(resetAuthedUser());
     dispatch(hideLoading());
   }
 }

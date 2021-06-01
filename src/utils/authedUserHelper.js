@@ -1,5 +1,5 @@
-export const defaultAuthedUid = '';
+export const emptyAuthedUid = '';
 
 export function isAuthenticated(user) {
-  return user !== defaultAuthedUid;
+  return user !== emptyAuthedUid;
 }

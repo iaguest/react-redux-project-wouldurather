@@ -1,4 +1,4 @@
-import { defaultAuthedUid } from '../utils/authedUserHelper'
+import { emptyAuthedUid } from '../utils/authedUserHelper'
 
 export const SET_AUTHED_USER = 'SET_AUTHED_USER';
 
@@ -9,6 +9,6 @@ export function setAuthedUser(uid) {
   }
 }
 
-export function setDefaultUser() {
-  return setAuthedUser(defaultAuthedUid);
+export function resetAuthedUser() {
+  return setAuthedUser(emptyAuthedUid);
 }
