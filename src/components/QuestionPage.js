@@ -7,6 +7,7 @@ import QuestionResult from './QuestionResult'
 
 import { handleAnswerQuestion } from '../actions/questions'
 import { userHasAnswered } from '../utils/questionHelper'
+import NotFoundPage from './NotFoundPage'
 
 class QuestionPage extends React.Component {
   onUserAnswer = (answer) => {
@@ -18,7 +19,10 @@ class QuestionPage extends React.Component {
     }));
   }
   render() {
-      const { qid, userHasAnswered } = this.props;
+      const { qid, isValidQid, userHasAnswered } = this.props;
+      if (!isValidQid) {
+        return <NotFoundPage />;
+      }
       const content = (userHasAnswered)
         ? <QuestionResult qid={qid} />
         : <Question qid={qid} onUserAnswer={this.onUserAnswer}/>;
@@ -26,11 +30,12 @@ class QuestionPage extends React.Component {
     }
 }
 
-function mapStateToProps({authedUser, users}, { match }) {
+function mapStateToProps({authedUser, questions, users}, { match }) {
   const { qid } = match.params;
   return {
     authedUser,
     qid,
+    isValidQid: Object.keys(questions).includes(qid),
     userHasAnswered: userHasAnswered(users[authedUser], qid)
   };
 }

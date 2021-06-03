@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { connect } from 'react-redux'
 import LoadingBar from 'react-redux-loading'
 
@@ -12,11 +12,12 @@ import {
 import { handleInitialData } from '../actions/shared'
 import { requireAuthentication } from './AuthenticatedComponent';
 import Header from './Header'
-import SignInPage from '../components/SignInPage'
+import SignInPage from './SignInPage'
 import QuestionSummaryListPage from './QuestionSummaryListPage'
 import QuestionPage from './QuestionPage'
 import LeaderBoardPage from './LeaderBoardPage'
-import NewQuestionPage from '../components/NewQuestionPage'
+import NewQuestionPage from './NewQuestionPage'
+import NotFoundPage from './NotFoundPage'
 
 class App extends Component {
   componentDidMount() {
@@ -31,14 +32,15 @@ class App extends Component {
             <Header />
             <hr />
             { this.props.loading
-                ? null
-                : <div>
+                ? null 
+                : <Switch>
                     <Route path={ rootPath } exact component={requireAuthentication(QuestionSummaryListPage)} />
                     <Route path={ signInPath } exact component={SignInPage} />
                     <Route path={ questionPath } exact component={requireAuthentication(QuestionPage)} />
                     <Route path={ newQuestionPath } component={requireAuthentication(NewQuestionPage)} />
                     <Route path={ leaderBoardPath } component={requireAuthentication(LeaderBoardPage)} />
-                  </div>
+                    <Route component={NotFoundPage} />
+                  </Switch>                
               } 
           </div>
         </Fragment>
