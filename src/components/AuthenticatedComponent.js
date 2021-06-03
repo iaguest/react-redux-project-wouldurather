@@ -7,11 +7,8 @@ import { signInPath } from '../utils/strings'
 export function requireAuthentication(Component) {
 
   class AuthenticatedComponent extends React.Component {
-    componentWillMount() {
+    componentDidMount() {
       this.checkAuth(this.props.isAuthenticated);
-    }
-    componentWillReceiveProps(nextProps) {
-      this.checkAuth(nextProps.isAuthenticated);
     }
     checkAuth(isAuthenticated) {
       if (!isAuthenticated) {
