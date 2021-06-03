@@ -1,4 +1,6 @@
 import { _saveQuestion, _saveQuestionAnswer } from '../api/_DATA'
+import { showLoading, hideLoading } from 'react-redux-loading'
+
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS';
 export const ANSWER_QUESTION = 'ANSWER_QUESTION';
 export const ADD_QUESTION = 'ADD_QUESTION';
@@ -41,6 +43,7 @@ function addQuestion(question) {
 
 export function handleAddQuestion(author, optionOneText, optionTwoText) {
   return async (dispatch) => {
+    dispatch(showLoading());
     let question;
     try {
       question = await _saveQuestion({
@@ -48,11 +51,11 @@ export function handleAddQuestion(author, optionOneText, optionTwoText) {
         optionOneText,
         optionTwoText
       });
+      dispatch(addQuestion(question));
     } catch (e) {
       console.warn('Error in handleAddQuestion: ', e);
       alert('There was an error when creating your question. Try again!');
-      return;
     }
-    dispatch(addQuestion(question));
+    dispatch(hideLoading());
   }
 }
