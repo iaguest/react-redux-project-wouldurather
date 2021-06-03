@@ -30,9 +30,11 @@ class QuestionSummaryListPage extends React.Component {
 function mapStateToProps({authedUser, users, questions}) {
   const answeredIds = new Set(Object.keys(users[authedUser].answers));
   const unansweredIds = Object.keys(questions).filter(qid => !answeredIds.has(qid));
+  const sortedQids = ids => ids.sort((a, b) => questions[b].timestamp - questions[a].timestamp);
+
   return {
-    answeredIds: [...answeredIds],
-    unansweredIds
+    answeredIds: sortedQids([...answeredIds]),
+    unansweredIds: sortedQids(unansweredIds)
   };
 }
 
