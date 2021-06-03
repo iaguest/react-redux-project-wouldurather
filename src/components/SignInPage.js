@@ -27,7 +27,8 @@ class SignInPage extends React.Component {
       : rootPath;
   }
   render() {
-    if (this.props.isAuthenticated) {
+    const {isAuthenticated, uids, users} = this.props;
+    if (isAuthenticated) {
       return <Redirect to={ this.nextPath() } />;
     }
     return (
@@ -38,8 +39,8 @@ class SignInPage extends React.Component {
           value={ this.state.selectedUser }
           onChange={(e) => this.onSelectUser(e.target.value)}
           >
-          { this.props.uids.map((uid) => {
-              return <option key={uid} value={uid}>{uid}</option>; })
+          { uids.map((uid) => {
+              return <option key={uid} value={uid}>{ users[uid].name }</option>; })
           }
         </select>
         <p/>
@@ -53,6 +54,7 @@ const mapStateToProps = ({authedUser, users}) => {
   const uids = Object.values(users).map((user) => user.id);
   return ({
       uids,
+      users,
       defaultUid: uids[0],
       isAuthenticated: isAuthenticated(authedUser)
     }

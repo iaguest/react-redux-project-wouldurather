@@ -8,16 +8,17 @@ import { resetAuthedUser } from '../actions/authedUser'
 import { isAuthenticated } from '../utils/authedUserHelper'
 
 function Header(props) {
+  const { authedUser, users, loading, dispatch } = props
   return (
     <div className='header'>
     <Nav />
-    { !props.loading && isAuthenticated(props.authedUser) &&
+    { !loading && isAuthenticated(authedUser) &&
       <ul className="header-end-item">
-        <li>{`Hello ${props.authedUser}!`}</li>
+        <li>{`Hello ${users[authedUser].name}!`}</li>
         <li>
           <Link
             to={signInPath}
-            onClick={ (e) => { props.dispatch(resetAuthedUser())} }
+            onClick={ (e) => { dispatch(resetAuthedUser())} }
             >Sign Out
           </Link>
         </li>
@@ -27,9 +28,10 @@ function Header(props) {
   );
 }
 
-function mapStateToProps({authedUser}) {
+function mapStateToProps({authedUser, users}) {
   return {
     authedUser,
+    users,
     loading: authedUser === null
   };
 }
