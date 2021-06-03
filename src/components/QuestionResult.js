@@ -16,14 +16,10 @@ function QuestionResult(props) {
   return (
     <div>
       <p>{ resultsString }:</p>
-      <p>
-        1. { optionOne }
-        { _displayVotes(numVotesOption1, totalVotes, selectedOption === optionOneString) }
-      </p>
-      <p>
-        2. { optionTwo }
-        { _displayVotes(numVotesOption2, totalVotes, selectedOption === optionTwoString) }
-      </p>
+      <p>1. { optionOne }</p>
+      { _displayVotes(numVotesOption1, totalVotes, selectedOption === optionOneString) }
+      <p>2. { optionTwo }</p>
+      { _displayVotes(numVotesOption2, totalVotes, selectedOption === optionTwoString) }
     </div>
   );
 }
