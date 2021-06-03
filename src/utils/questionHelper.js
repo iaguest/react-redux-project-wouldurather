@@ -1,13 +1,17 @@
 import { answerIds } from './userHelper'
 
+const emptyOption = null;
+
 function _getSelectedOption(user, qid) {
   return answerIds(user).includes(qid)
     ? user.answers[qid]
-    : null;
+    : emptyOption;
 }
 
-// TODO: pass user in directly
-export function getSelectedOption(users, uid, qid) {
-  const user = users[uid];
+export function getSelectedOption(user, qid) {
   return _getSelectedOption(user, qid);
+}
+
+export function userHasAnswered(user, qid) {
+  return getSelectedOption(user, qid) !== emptyOption;
 }

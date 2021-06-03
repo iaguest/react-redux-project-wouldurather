@@ -2,16 +2,12 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
-import { wouldYouRatherString, buildQuestionPath, buildQuestionResultPath } from '../utils/strings'
-import { getSelectedOption } from '../utils/questionHelper'
+import { wouldYouRatherString, buildQuestionPath } from '../utils/strings'
+import { userHasAnswered } from '../utils/questionHelper'
 
 class QuestionSummary extends React.Component {
-  onSubmit = (e, qid, userHasAnswered) => {
+  onSubmit = (e, qid) => {
     e.preventDefault();
-    if (userHasAnswered) {
-      this.props.history.push(buildQuestionResultPath(qid));
-      return;
-    }
     this.props.history.push(buildQuestionPath(qid));
   }
   render() {
@@ -24,7 +20,7 @@ class QuestionSummary extends React.Component {
            <div>
             <button
               type='submit'
-              onClick={ (e) => { this.onSubmit(e, question.id, userHasAnswered) } }>
+              onClick={ (e) => { this.onSubmit(e, question.id) } }>
               { `View ${(userHasAnswered) ? "Poll" : "Question"}` }
             </button>
           </div>
@@ -35,11 +31,10 @@ class QuestionSummary extends React.Component {
 }
 
 function mapStateToProps({authedUser, users, questions}, {qid}) {
-  const selectedOption = getSelectedOption(users, authedUser, qid);
   return {
     authedUser,
     question: questions[qid],
-    userHasAnswered: selectedOption !== null
+    userHasAnswered: userHasAnswered(users[authedUser], qid)
   };
 }
 

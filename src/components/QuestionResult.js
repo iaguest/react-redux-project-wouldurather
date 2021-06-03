@@ -47,7 +47,7 @@ function mapStateToProps({authedUser, users, questions}, {qid}) {
     numVotesOption1,
     numVotesOption2,
     totalVotes: numVotesOption1 + numVotesOption2,
-    selectedOption: getSelectedOption(users, authedUser, qid),
+    selectedOption: getSelectedOption(users[authedUser], qid),
   };
 }
 

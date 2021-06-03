@@ -7,7 +7,6 @@ import {
   rootPath,
   newQuestionPath,
   questionPath,
-  questionResultPath,
   leaderBoardPath,
   signInPath } from '../utils/strings'
 import { handleInitialData } from '../actions/shared'
@@ -16,7 +15,6 @@ import Header from './Header'
 import SignInPage from '../components/SignInPage'
 import QuestionSummaryListPage from './QuestionSummaryListPage'
 import QuestionPage from './QuestionPage'
-import QuestionResultPage from './QuestionResultPage'
 import LeaderBoardPage from './LeaderBoardPage'
 import NewQuestionPage from '../components/NewQuestionPage'
 
@@ -38,7 +36,6 @@ class App extends Component {
                     <Route path={ rootPath } exact component={requireAuthentication(QuestionSummaryListPage)} />
                     <Route path={ signInPath } exact component={SignInPage} />
                     <Route path={ questionPath } exact component={requireAuthentication(QuestionPage)} />
-                    <Route path={ questionResultPath } exact component={requireAuthentication(QuestionResultPage)} />
                     <Route path={ newQuestionPath } component={requireAuthentication(NewQuestionPage)} />
                     <Route path={ leaderBoardPath } component={requireAuthentication(LeaderBoardPage)} />
                   </div>
