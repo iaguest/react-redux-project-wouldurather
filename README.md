@@ -8,3 +8,23 @@ To test the application:
 
 * install all project dependencies with `npm install`
 * start the development server with `npm start`
+
+## Screenshots
+
+### Sign In
+![Alt text](screenshots/sign-in.png?raw=true "Image 1")
+
+### Home
+![Alt text](screenshots/home.png?raw=true "Image 2")
+
+### Add
+![Alt text](screenshots/add.png?raw=true "Image 3")
+
+### Question
+![Alt text](screenshots/question.png?raw=true "Image 4")
+
+### Poll
+![Alt text](screenshots/poll.png?raw=true "Image 5")
+
+### Leaderboard
+![Alt text](screenshots/leaderboard.png?raw=true "Image 6")
